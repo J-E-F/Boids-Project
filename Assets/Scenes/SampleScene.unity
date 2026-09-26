@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlockSpawner
   flockPrefab: {fileID: 1847477342828295960, guid: a83924be6fae91141a81223a788bd307, type: 3}
-  flockCount: 30
+  flockCount: 50
   boidsSpawned: []
 --- !u!1 &1817805016
 GameObject:

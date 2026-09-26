@@ -19,9 +19,9 @@ public class FieldOfViewEditor : Editor
 
         Handles.color = Color.red;
 
-        foreach (Transform visibleTarget in fow.visibleBoids)
+        foreach (GameObject visibleTarget in fow.visibleBoids)
         {
-            Handles.DrawLine(fow.transform.position, visibleTarget.position);
+            Handles.DrawLine(fow.transform.position, visibleTarget.transform.position);
         }
 
     }

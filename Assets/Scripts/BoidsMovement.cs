@@ -1,20 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using Unity.VisualScripting;
+using Unity.Hierarchy;
 
 public class BoidsMovement : MonoBehaviour
 {
-    [SerializeField]private float speed = 100f;
-    [SerializeField]private float rotationSpeed = 5f;
+    public Vector2 direction;
+    public Vector2 speed;
 
-    public bool moveForward = true;
-    public bool seperation = false;
-    public bool rule2 = false;
-    public bool rule3 = false;
+    public int speedMultiplier = 2;
+    public float rotationSpeed;
 
-    private Vector2 currVelocity;
-
-    public bool BoidInsideFOW = false;
+    [SerializeField]private float distanceToTarget;
 
     public Rigidbody2D rB2D;
 
@@ -25,11 +22,7 @@ public class BoidsMovement : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
-    public List<Transform> visibleBoids = new List<Transform>();
-    private void Start()
-    {
-        rB2D.GetComponent<Rigidbody2D>();
-    }
+    public List<GameObject> visibleBoids = new List<GameObject>();
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
@@ -40,60 +33,54 @@ public class BoidsMovement : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
     }
 
+    private void Start()
+    {
+        rB2D.GetComponent<Rigidbody2D>();
+        direction = Random.insideUnitCircle.normalized;
+        speed = new Vector2(Random.Range(3, 6), Random.Range(3, 6)) * speedMultiplier;
+        //transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+
+        rB2D.linearVelocity = speed * direction * speedMultiplier;
+    }
+
     private void Update()
     {
-        if (moveForward)
-        {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
-        }
+        findVisibleTargets();
+        alignment();
+        rB2D.linearVelocity = speed * direction * speed;
+
     }
-    private void FixedUpdate()
+    public void alignment()
     {
-        if (seperation)
+        Vector2 steering = new Vector2(0,0);
+        int total = 0;
+
+        foreach (GameObject boid in visibleBoids)
         {
-            moveForward = false;
-            separation();
-            findVisibleTargets();
-        }
-    }
+            if (boid == null) continue;
 
-    public void separation()
-    {
-        Vector2 curr = transform.position;
-        Vector2 avoidDir = Vector2.zero;
-        int tooCloseCount = 0;
+            BoidsMovement boidVelcoity = boid.GetComponent<BoidsMovement>();
 
-        foreach (Transform boid in visibleBoids)
-        {
-            if (boid == transform) continue;
+            //if (boidVelcoity == null || boidVelcoity.rB2D == null) continue;
 
-            Vector2 other = boid.position;
-            float dist = Vector2.Distance(curr, other);
-
-            if (dist < viewRadius && dist > 0.0001f)
+            if (boid != gameObject && distanceToTarget <= 2f)
             {
-                Vector2 away = (curr - other) / dist; // closer = stronger influence
-                avoidDir += away;
-                tooCloseCount++;
+                steering += boidVelcoity.rB2D.linearVelocity;
+                total++;
             }
         }
-
-        if (tooCloseCount > 0)
+        if (total >= 0)
         {
-            avoidDir /= tooCloseCount;
+            steering /= total;
+            steering = speed*direction*speedMultiplier;
+            steering -= rB2D.linearVelocity;
 
-            float targetAngle = Mathf.Atan2(avoidDir.y, avoidDir.x) * Mathf.Rad2Deg - 90f;
-
-            transform.rotation = Quaternion.Euler(0, 0, targetAngle);
+            //rB2D.linearVelocity += steering;
         }
-
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
-
-        Vector3 pos = transform.position;
-        pos.z = 0f;
-        transform.position = pos;
+        //return steering;
     }
-    public Vector2 Velocity => currVelocity;
+
+
     private void findVisibleTargets()
     {
         visibleBoids.Clear();
@@ -105,10 +92,10 @@ public class BoidsMovement : MonoBehaviour
             Vector2 dirToTarget = (traget.position - transform.position).normalized;
             if (Vector2.Angle(transform.up, dirToTarget) < viewAngle / 2)
             {
-                float distToTarget = Vector2.Distance(transform.position, traget.position);
-                if (!Physics2D.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
+                distanceToTarget = Vector2.Distance(transform.position, traget.position);
+                if (!Physics2D.Raycast(transform.position, dirToTarget, distanceToTarget, obstacleMask))
                 {
-                    visibleBoids.Add(traget);
+                    visibleBoids.Add(targetsInViewRadius[i].gameObject);
                 }
             }
         }

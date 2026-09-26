@@ -4,8 +4,10 @@ public class FlockSpawner : MonoBehaviour
 {
     private float spawnRange = 10f;
 
+    private Vector2 moveForwardSpeed;
+
     public GameObject flockPrefab;
-    public int flockCount = 10;
+    public int flockCount;
 
     public GameObject[] boidsSpawned;
     private void Start()

@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847477342828295960}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 2.5}
   m_ConstrainProportionsScale: 1
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 7161980886863496496}
   - {fileID: 4662230309369266941}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8436736648935051973
 SpriteRenderer:
   serializedVersion: 2
@@ -120,15 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2143bd9907556154a92aa84d2e1a5c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoidsMovement
-  speed: 5
-  rotationSpeed: 40
-  moveForward: 1
-  seperation: 1
-  rule2: 0
-  rule3: 0
-  BoidInsideFOW: 0
+  direction: {x: 0, y: 0}
+  speed: {x: 0, y: 0}
+  speedMultiplier: 1
+  rotationSpeed: 2
+  distanceToTarget: 0
   rB2D: {fileID: 1336734396999492878}
-  viewRadius: 1
+  viewRadius: 4
   viewAngle: 265
   targetMask:
     serializedVersion: 2
@@ -272,7 +270,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
