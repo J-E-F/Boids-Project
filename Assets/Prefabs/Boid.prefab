@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847477342828295960}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 2.5}
   m_ConstrainProportionsScale: 1
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 7161980886863496496}
   - {fileID: 4662230309369266941}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &8436736648935051973
 SpriteRenderer:
   serializedVersion: 2
@@ -121,13 +121,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoidsMovement
   direction: {x: 0, y: 0}
-  speed: {x: 0, y: 0}
-  speedMultiplier: 1
+  speed: 2
+  speedMultiplier: 3
   rotationSpeed: 2
   distanceToTarget: 0
   rB2D: {fileID: 1336734396999492878}
   viewRadius: 4
   viewAngle: 265
+  alignmentRadius: 4
   targetMask:
     serializedVersion: 2
     m_Bits: 256

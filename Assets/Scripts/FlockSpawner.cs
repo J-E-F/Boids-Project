@@ -24,7 +24,7 @@ public class FlockSpawner : MonoBehaviour
     {
         Vector2 randomVectorSpawn = new Vector2(Random.Range(-spawnRange, spawnRange), Random.Range(-spawnRange, spawnRange));
 
-        Quaternion randomZRotation = Quaternion.Euler(0f, 180f, Random.Range(0f, 360f));
+        Quaternion randomZRotation = Quaternion.Euler(0f, 0, Random.Range(0f, 360f));
         GameObject newBoid = Instantiate(flockPrefab, randomVectorSpawn, randomZRotation);
         return newBoid;
     }
