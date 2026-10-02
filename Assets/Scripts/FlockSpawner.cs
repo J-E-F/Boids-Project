@@ -10,6 +10,8 @@ public class FlockSpawner : MonoBehaviour
     public int flockCount;
 
     public GameObject[] boidsSpawned;
+
+    public float neighbourRadius = 5f;
     private void Start()
     {
         boidsSpawned = new GameObject[flockCount];

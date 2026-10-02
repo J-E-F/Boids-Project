@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 965970736974252756}
   - component: {fileID: 8436736648935051973}
+  - component: {fileID: 6222442091864931172}
   - component: {fileID: 7348212320071603938}
-  - component: {fileID: 8494108684169840705}
   - component: {fileID: 1336734396999492878}
   m_Layer: 8
   m_Name: Boid
@@ -96,6 +96,30 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &6222442091864931172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847477342828295960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebf996105223da40823a20cc050bc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoidsMove
+  direction: {x: 0, y: 0}
+  targetDistance: 0
+  speed: 3
+  speedModifier: 2
+  turnSpeed: 200
+  startSerching: 1
+  neighbours: []
+  drawDebugLines: 1
+  debugColor: {r: 0, g: 0, b: 0, a: 0}
+  alignWeight: 1
+  cohesionWeight: 0.1
+  separationWeight: 0.1
 --- !u!114 &7348212320071603938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,34 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d16240932cf82643a68686a3ef396c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoidWrapAround
---- !u!114 &8494108684169840705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847477342828295960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2143bd9907556154a92aa84d2e1a5c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoidsMovement
-  direction: {x: 0, y: 0}
-  speed: 2
-  speedMultiplier: 3
-  rotationSpeed: 2
-  distanceToTarget: 0
-  rB2D: {fileID: 1336734396999492878}
-  viewRadius: 4
-  viewAngle: 265
-  alignmentRadius: 4
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 256
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 512
-  visibleBoids: []
 --- !u!50 &1336734396999492878
 Rigidbody2D:
   serializedVersion: 5
