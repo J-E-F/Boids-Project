@@ -20,9 +20,9 @@ public class BoidsMove : MonoBehaviour
     [SerializeField] private bool drawDebugLines = true;
     [SerializeField] private Color debugColor;
 
-    public float alignWeight = 1f;
+    /*public float alignWeight = 1f;
     public float cohesionWeight = 1f;
-    public float separationWeight = 1f;
+    public float separationWeight = 1f;*/
 
 
     private void Update()
@@ -60,7 +60,7 @@ public class BoidsMove : MonoBehaviour
         Vector2 newPosition = (Vector2)transform.position + direction * speed * speedModifier * Time.fixedDeltaTime;
         transform.position = newPosition;
 
-        direction = (direction + alignment * alignWeight + cohesion * cohesionWeight + separation * separationWeight).normalized;
+        direction = (direction + alignment * flockSpawner.alignWeight + cohesion * flockSpawner.cohesionWeight + separation * flockSpawner.separationWeight).normalized;
         transform.position += (Vector3)(direction * speed * Time.deltaTime);
     }
 
@@ -80,14 +80,14 @@ public class BoidsMove : MonoBehaviour
             if (other == null || other == gameObject) continue;
 
             Vector2 offset = (Vector2)other.transform.position - pos;
-            float dist = offset.magnitude; // the float you wanted
+            float dist = offset.magnitude;
             if (dist > flockSpawner.neighbourRadius) continue;
 
             neighbours.Add(other);
 
-            dirSum += other.GetComponent<BoidsMove>().direction;  // alignment
-            posSum += (Vector2)other.transform.position;          // cohesion
-            sepSum -= offset / Mathf.Max(dist * dist, 0.0001f);   // separation, stronger when closer
+            dirSum += other.GetComponent<BoidsMove>().direction;
+            posSum += (Vector2)other.transform.position;
+            sepSum -= offset / Mathf.Max(dist * dist, 0.0001f);
         }
 
         int count = neighbours.Count;

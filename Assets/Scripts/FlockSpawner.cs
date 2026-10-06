@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FlockSpawner : MonoBehaviour
@@ -7,18 +9,27 @@ public class FlockSpawner : MonoBehaviour
     private Vector2 moveForwardSpeed;
 
     public GameObject flockPrefab;
-    public int flockCount;
+    [Range(1, 150)] public int flockCount;
 
-    public GameObject[] boidsSpawned;
+    public List<GameObject> boidsSpawned = new List<GameObject>();
+
+    [Header("Weights")]
+    [Range(0f, 1.5f)] public float alignWeight = 1f;
+    [Range(0f, 1.5f)] public float cohesionWeight = 1f;
+    [Range(0f, 1.5f)] public float separationWeight = 1f;
 
     public float neighbourRadius = 5f;
-    private void Start()
+    public void Update()
     {
-        boidsSpawned = new GameObject[flockCount];
-
-        for (int i = 0; i < flockCount; i++)
+        while (boidsSpawned.Count < flockCount)
         {
-            boidsSpawned[i] = spawnFlock();
+            boidsSpawned.Add(spawnFlock());
+        }
+        while (boidsSpawned.Count > flockCount)
+        {
+            int last = boidsSpawned.Count - 1;
+            Destroy(boidsSpawned[last]);
+            boidsSpawned.RemoveAt(last);
         }
     }
 

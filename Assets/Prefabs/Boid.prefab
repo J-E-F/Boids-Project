@@ -110,16 +110,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoidsMove
   direction: {x: 0, y: 0}
   targetDistance: 0
-  speed: 3
+  speed: 5
   speedModifier: 2
-  turnSpeed: 200
+  turnSpeed: 360
   startSerching: 1
   neighbours: []
   drawDebugLines: 1
   debugColor: {r: 0, g: 0, b: 0, a: 0}
-  alignWeight: 1
-  cohesionWeight: 0.1
-  separationWeight: 0.1
 --- !u!114 &7348212320071603938
 MonoBehaviour:
   m_ObjectHideFlags: 0
