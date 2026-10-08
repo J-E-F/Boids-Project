@@ -24,7 +24,12 @@ public class BoidsMove : MonoBehaviour
     public float cohesionWeight = 1f;
     public float separationWeight = 1f;*/
 
+    private void Start()
+    {
+        flockSpawner = FindFirstObjectByType<FlockSpawner>();
 
+        debugColor = new Color(Random.value, Random.value, Random.value);
+    }
     private void Update()
     {
         if (!drawDebugLines) return;
@@ -41,13 +46,6 @@ public class BoidsMove : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnSpeed * Time.deltaTime);
 
         }
-    }
-
-    private void Start()
-    {
-        flockSpawner = FindFirstObjectByType<FlockSpawner>();
-
-        debugColor = new Color(Random.value, Random.value, Random.value);
     }
 
     private void FixedUpdate()
