@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoidsMove
   direction: {x: 0, y: 0}
   targetDistance: 0
-  speed: 5
+  speed: 3
   speedModifier: 2
   turnSpeed: 360
   startSerching: 1

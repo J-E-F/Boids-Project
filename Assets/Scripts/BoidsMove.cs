@@ -20,6 +20,8 @@ public class BoidsMove : MonoBehaviour
     [SerializeField] private bool drawDebugLines = true;
     [SerializeField] private Color debugColor;
 
+    private Vector2 alignment, cohesion, separation;
+
     /*public float alignWeight = 1f;
     public float cohesionWeight = 1f;
     public float separationWeight = 1f;*/
@@ -58,20 +60,22 @@ public class BoidsMove : MonoBehaviour
         Vector2 newPosition = (Vector2)transform.position + direction * speed * speedModifier * Time.fixedDeltaTime;
         transform.position = newPosition;
 
-        direction = (direction + alignment * flockSpawner.alignWeight + cohesion * flockSpawner.cohesionWeight + separation * flockSpawner.separationWeight).normalized;
+        direction = (direction + alignment 
+            * flockSpawner.alignWeight + cohesion 
+            * flockSpawner.cohesionWeight + separation 
+            * flockSpawner.separationWeight).normalized;
+
         transform.position += (Vector3)(direction * speed * Time.deltaTime);
     }
-
-    private Vector2 alignment, cohesion, separation;
 
     private void updateNeighbours()
     {
         neighbours.Clear();
 
         Vector2 pos = transform.position;
-        Vector2 dirSum = Vector2.zero;
-        Vector2 posSum = Vector2.zero;
-        Vector2 sepSum = Vector2.zero;
+        Vector2 neighbourDirSum = Vector2.zero;
+        Vector2 neighbourPosSum = Vector2.zero;
+        Vector2 seperationSum = Vector2.zero;
 
         foreach (var other in flockSpawner.boidsSpawned)
         {
@@ -83,9 +87,9 @@ public class BoidsMove : MonoBehaviour
 
             neighbours.Add(other);
 
-            dirSum += other.GetComponent<BoidsMove>().direction;
-            posSum += (Vector2)other.transform.position;
-            sepSum -= offset / Mathf.Max(dist * dist, 0.0001f);
+            neighbourDirSum += other.GetComponent<BoidsMove>().direction;
+            neighbourPosSum += (Vector2)other.transform.position;
+            seperationSum -= offset / Mathf.Max(dist * dist, 0.0001f);
         }
 
         int count = neighbours.Count;
@@ -95,8 +99,8 @@ public class BoidsMove : MonoBehaviour
             return;
         }
 
-        alignment = (dirSum / count).normalized;
-        cohesion = ((posSum / count) - pos).normalized;
-        separation = sepSum.normalized;
+        alignment = (neighbourDirSum / count).normalized;
+        cohesion = ((neighbourPosSum / count) - pos).normalized;
+        separation = seperationSum.normalized;
     }
 }
