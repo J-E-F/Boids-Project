@@ -76,7 +76,7 @@ Select GameObjects in the Hierarchy or Folders(e.g., 'FlockManager', 'Boid') to 
 
 ## ❓ FAQ
 
-* **"I opened the project, but [specific problem, e.g., 'nothing happens when I press Play' or 'I see errors in the Console']."**
+* **"I opened the project, but 'nothing happens when I press Play' or 'I see errors in the Console'."**
     * **Check the Console:** Look for error messages in Unity's Console window (Window > General > Console). These often indicate missing scripts, incorrect configurations, or compilation issues.
     * **Script References:** Ensure all public script fields in the Inspector that expect a reference (e.g., to another GameObject, Prefab, or Component) are correctly assigned.
     * **Unity Version:** Double-check that you are using a compatible Unity Editor version as specified in the Prerequisites.
