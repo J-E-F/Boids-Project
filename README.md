@@ -1,7 +1,7 @@
 [README.md](https://github.com/user-attachments/files/33182396/README.md)
-# [Boids Simulation in 2D Unity]
+# Boids Simulation in 2D Unity
 
-[This is a project made for a course at Griffith University that simulates Boids in Unity in a 2D scene.]
+This is a project made for a course at Griffith Film School that simulates Boids in Unity in a 2D scene.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -29,10 +29,10 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Installation
 
 1.  **Clone the repository:**
-    ```sh
+    ```
     git clone [https://github.com/J-E-F/Boids-Project]
     ```
-    (Alternatively, for private collaboration: or contact `<email>` to be added as a contributor.)
+    (Alternatively, for private collaboration: or contact `Edvartjk@gmail.com` to be added as a contributor.)
 
 2.  **Open the project in Unity Hub:**
     * Launch Unity Hub.
@@ -50,28 +50,12 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ## ✨ Features
 
-This project includes the following main features:
+This project includes the following main feature:
 
-### Feature 1: [Name of First Actual Feature/System, e.g., "Dynamic Combat System"]
-
-* **Description:** [Provide a concise description of this feature, e.g., "A flexible combat system allowing players to combine melee attacks, ranged abilities, and defensive maneuvers."].
+### Feature: Boid Simulation with the ability to change the amount of boids, separation weight, cohesion weight and alignment weight.
+* **Description:** Provides a simple and easy to understand boid simulation that uses the three rules made by Craig Reynolds in 2D space made with Unity.
 * **Characteristics:**
-    * [e.g., "Features a combo counter and special moves unlocked through progression."].
-    * [e.g., "Uses ScriptableObjects for defining weapon and ability properties."].
-    * [e.g., "Player feedback is provided through visual effects and haptic responses (if applicable)."].
-
-<img src="images/feature_1_image.png" width="512" alt="Image showcasing Feature 1">
-
-### Feature 2: [Name of Second Actual Feature/System, e.g., "Procedural Quest Generation"]
-
-* **Description:** [Provide a concise description, e.g., "A system that generates unique quests based on player actions and world state."].
-* **Characteristics:**
-    * [e.g., "Ensures replayability with varied objectives and rewards."].
-    * [e.g., "Integrates with the narrative system to create emergent storytelling opportunities."].
-    * [e.g., "Quests are displayed in a UI journal and tracked on the world map."].
-
-<img src="images/feature_2_image.png" width="512" alt="Image showcasing Feature 2">
-
+    * Features 4 sliders that change the amount, separation, cohesion and alignment weight for the boids.
 ---
 
 ## 🛠️ Usage
@@ -86,7 +70,7 @@ Key scene files include:
 * `Assets/Scenes/Game.unity`: Main gameplay scene.
 * `Assets/Scenes/Credits.unity`: Displays the game credits.
 
-Select GameObjects in the Hierarchy (e.g., 'Player', 'LevelManager') to view and modify their properties in the Inspector window.
+Select GameObjects in the Hierarchy or Folders(e.g., 'FlockManager', 'Boid') to view and modify their properties in the Inspector window.
 
 ---
 
@@ -103,17 +87,12 @@ Select GameObjects in the Hierarchy (e.g., 'Player', 'LevelManager') to view and
 
 This repository uses the following branches:
 
-* **`main`**: [Describe purpose, e.g., "Stable development branch containing the latest tested features. All core gameplay mechanics (Feature 1, Feature 2) are integrated here."].
-* **`feature-b_branch`**: [Describe purpose, e.g., "Development branch for Feature B. Currently contains..." or "Archived branch for early development of Feature B."].
-* **`feature-a_branch`**: [Describe purpose, e.g., "Development branch for Feature A..."].
-
-*(Adjust branch names and descriptions as per your branching strategy.)*
-
+* **`main`**: Stable download of the project that has the main feature implemented and working.
 ---
 
 ## 🤝 Contributing
 
-The team is open to contributions and feedback.
+I am open to contributions and feedback.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -135,9 +114,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## 📞 Contact
 
-[Your Name / Team Name] - [@your_X_handle](https://twitter.com/your_twitter_handle) - [your_email@example.com]
+[Edvart] - [@jef-games.bsky.social](https://bsky.app/profile/jef-games.bsky.social) - [Edvartjk@gmail.com]
 
-Project Link: [https://github.com/your-username/your-repository](https://github.com/your-username/your-repository)
+Project Link: [https://github.com/J-E-F/Boids-Project](https://github.com/J-E-F/Boids-Project)
 
 ---
 
