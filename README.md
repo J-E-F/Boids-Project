@@ -107,7 +107,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## 📜 License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `Copyright 2026.txt` for more information.
 *(Consider adding a LICENSE.txt file with the MIT License text to your repository).*
 
 ---
