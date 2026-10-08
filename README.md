@@ -7,9 +7,9 @@
 
 ## 📖 About The Project
 
-This repository contains the Unity project **[Boids-Project]**.
+This repository contains the Unity project **Boids-Project**.
 
-Key features include [The ability to simulate boids in a 2D environment with 4 sliders that change the way the boids move and how many boids are simulated]. This project aims to deliver a [Simplistic and educational look at how you can simulate boids in 2D Unity] experience.
+Key features include The ability to simulate boids in a 2D environment with 4 sliders that change the way the boids move and how many boids are simulated. This project aims to deliver a Simplistic and educational look at how you can simulate boids in 2D Unity experience.
 
 <img src="Boids.gif" width="512" alt="Boids Simulation">
 
