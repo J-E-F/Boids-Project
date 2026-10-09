@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//exit and continu buttons for the pause menu.
 public class ButtonManager : MonoBehaviour
 {
     public PauseMenu pauseMenu;

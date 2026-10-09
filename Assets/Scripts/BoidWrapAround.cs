@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//This is a script that Wraps the boids around the screen when they go off the edge of the camera view.
 public class BoidWrapAround : MonoBehaviour
 {
     private float screenWidth;
@@ -9,12 +9,11 @@ public class BoidWrapAround : MonoBehaviour
 
     private void Start()
     {
-        // 1. Get screen size in world units
+        //Gets the screen hight and width based on the camera size and aspect ratio.
         screenHeight = Camera.main.orthographicSize * 2f;
         screenWidth = screenHeight * Camera.main.aspect;
 
-        // 2. Add an offset based on the object's sprite/renderer size
-        if (TryGetComponent<Renderer>(out Renderer rend))
+        if (TryGetComponent<Renderer>(out Renderer rend))//Adds offset to the wrap around so it looks better when the boids leave the screen.
         {
             objectWidth = rend.bounds.size.x / 2f;
             objectHeight = rend.bounds.size.y / 2f;
@@ -24,19 +23,15 @@ public class BoidWrapAround : MonoBehaviour
     private void Update()
     {
         Vector3 position = transform.position;
-        // Account for camera position in case the camera moves
         Vector3 camPos = Camera.main.transform.position;
 
-        // Horizontal boundaries (with object width offset)
         float rightEdge = camPos.x + (screenWidth / 2f) + objectWidth;
-        float leftEdge = camPos.x - (screenWidth / 2f) - objectWidth;
+        float leftEdge = camPos.x - (screenWidth / 2f) - objectWidth;//calculates the horizontal width of the screen, and makes it a edge.
 
-        // Vertical boundaries (with object height offset)
         float topEdge = camPos.y + (screenHeight / 2f) + objectHeight;
-        float bottomEdge = camPos.y - (screenHeight / 2f) - objectHeight;
+        float bottomEdge = camPos.y - (screenHeight / 2f) - objectHeight;//calculates the verticle hight of the screen, and makes it a edge.
 
-        // Wrap horizontally
-        if (position.x > rightEdge)
+        if (position.x > rightEdge)//Horizontal Wrap Around
         {
             position.x = leftEdge;
         }
@@ -45,8 +40,7 @@ public class BoidWrapAround : MonoBehaviour
             position.x = rightEdge;
         }
 
-        // Wrap vertically
-        if (position.y > topEdge)
+        if (position.y > topEdge)//Vertical Wrap Around
         {
             position.y = bottomEdge;
         }

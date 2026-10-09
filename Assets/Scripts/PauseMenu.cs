@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Pause menu script.
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//UI event calls for when the sliders values are changed.
 public class ChangeValue : MonoBehaviour
 {
     public FlockSpawner flockSpawner;
